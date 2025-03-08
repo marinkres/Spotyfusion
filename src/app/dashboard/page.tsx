@@ -167,30 +167,9 @@ export default function Dashboard() {
         <div className="flex items-center gap-2">
           
           <Link href="/dashboard" className="text-xl font-bold">
-          <div className="h-8 w-8 rounded-full bg-green-500 flex items-center justify-center">
-  <svg
-    version="1.1"
-    id="Uploaded to svgrepo.com"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-    width="16" // Adjusted width
-    height="16" // Adjusted height
-    viewBox="0 0 32 32"
-    xmlSpace="preserve"
-  >
-    <style type="text/css">{`
-      .sharpcorners_een { fill: #111918; }
-      .st0 { fill: #111918; }
-    `}</style>
-    <path
-      className="sharpcorners_een"
-      d="M29,0v5.515c0,2.138-0.833,4.147-2.344,5.658l-7.484,7.484c-0.176,0.176-0.329,0.368-0.467,0.568
-      c-0.357-1.384-1.041-2.661-2.014-3.744l7.138-7.138C24.584,7.588,25,6.583,25,5.515V0H29z M18,24.343v-2.858
-      c0-2.138-0.833-4.147-2.344-5.657L8.172,8.342C7.416,7.588,7,6.583,7,5.515V0H3v5.515c0,2.138,0.833,4.147,2.344,5.657l7.484,7.486
-      C13.584,19.412,14,20.417,14,21.485v2.858l-2.596-2.596l-2.828,2.828L16,32l7.425-7.425l-2.828-2.828L18,24.343z"
-    />
-  </svg>
-</div>
+          <div className="h-8 w-8 rounded-full flex items-center justify-center">
+            <img src="images/logo.png"></img>  
+        </div>
 
           </Link>
         </div>
