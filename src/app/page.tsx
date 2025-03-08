@@ -202,12 +202,6 @@ export default function Page() {
             >
               Terms of Service
             </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Contact
-            </Link>
           </div>
         </div>
       </footer>
