@@ -9,7 +9,6 @@ const SCOPES = [
   "playlist-modify-private",
   "playlist-modify-public",
   "user-read-private",
-  "user-read-email",
 ];
 
 /**
