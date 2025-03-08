@@ -1,6 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
+import { redirectToSpotifyAuthorize } from "@/lib/spotify";
 
 export default function Page() {
   return (
@@ -29,7 +32,11 @@ export default function Page() {
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
-          <Button variant="outline" size="sm">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => redirectToSpotifyAuthorize()}
+          >
             Sign In
           </Button>
         </div>
@@ -183,6 +190,7 @@ export default function Page() {
           <Button
             size="lg"
             className="bg-green-500 hover:bg-green-600 text-white"
+            onClick={() => redirectToSpotifyAuthorize()}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
