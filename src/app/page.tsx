@@ -33,8 +33,9 @@ export default function Page() {
       C13.584,19.412,14,20.417,14,21.485v2.858l-2.596-2.596l-2.828,2.828L16,32l7.425-7.425l-2.828-2.828L18,24.343z"
     />
   </svg>
+  
 </div>
-
+<h1 className="text-xl font-bold underline"><span className="text-green-600">Spoty</span>Merge</h1>
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />

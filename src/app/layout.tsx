@@ -11,6 +11,22 @@ export const metadata: Metadata = {
   title: "SPOTYMERGE",
   description:
     "Combine multiple Spotify playlists into one perfect mix with just a few clicks.",
+    openGraph: {
+      title: "SpotyMerge",
+      description: "Combine multiple Spotify playlists into one perfect mix with just a few clicks.",
+      url: "https://spotymerge.example.com", // Replace with your website URL
+      siteName: "SpotyMerge",
+      images: [
+        {
+          url: "/images/banner.png", // Path to your Open Graph image
+          width: 1200,
+          height: 630,
+          alt: "SpotyMerge - Combine Spotify Playlists",
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
 };
 
 export default function RootLayout({
