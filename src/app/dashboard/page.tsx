@@ -109,8 +109,19 @@ export default function Dashboard() {
     );
   };
 
-  const handleLogout = () => {
-    router.push("/api/auth/logout");
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("/api/auth/logout");
+      if (response.ok) {
+        router.push("/");
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+      // Fallback: manually redirect to home
+      router.push("/");
+    }
   };
 
   const handleMerge = async () => {
