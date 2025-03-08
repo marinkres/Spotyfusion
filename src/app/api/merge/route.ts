@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     // Fetch tracks from all selected playlists
     const allTracks = [];
-    const trackUris = new Set();
+    const trackUris = new Set<string>();
 
     for (const playlistId of playlistIds) {
       const tracksData = await getPlaylistTracks(accessToken, playlistId);
