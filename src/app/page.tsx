@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Button } from "@/components/ui/button";
 import { redirectToSpotifyAuthorize } from "@/lib/spotify";
+import { FaSpotify } from "react-icons/fa";
 
 export default function Page() {
   return (
@@ -159,8 +160,10 @@ export default function Page() {
               <path d="M12 5v14"></path>
               <path d="M5 12h14"></path>
             </svg>
-            Connect with Spotify
+            Connect with Spotify <FaSpotify className="ml-2" size={20} />
+
           </Button>
+          
         </div>
       </main>
 
