@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     openGraph: {
       title: "SpotyMerge",
       description: "Combine multiple Spotify playlists into one perfect mix with just a few clicks.",
-      url: "https://spotymerge.example.com", // Replace with your website URL
+      url: "https://spotymerge.marink.me", // Replace with your website URL
       siteName: "SpotyMerge",
       images: [
         {
