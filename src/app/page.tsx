@@ -28,7 +28,7 @@ export default function Page() {
               <circle cx="18" cy="16" r="3"></circle>
             </svg>
           </div>
-          <h1 className="text-xl font-bold">Playlist Fusion</h1>
+          <h1 className="text-xl font-bold">SpotyMerge</h1>
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
@@ -77,7 +77,7 @@ export default function Page() {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-medium">Summer Hits</h3>
+                      <h3 className="font-medium">UK Chill Mix</h3>
                       <p className="text-sm text-muted-foreground">32 tracks</p>
                     </div>
                     <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
@@ -117,7 +117,7 @@ export default function Page() {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-medium">Workout Mix</h3>
+                      <h3 className="font-medium">Gym Workout</h3>
                       <p className="text-sm text-muted-foreground">45 tracks</p>
                     </div>
                     <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
@@ -157,7 +157,7 @@ export default function Page() {
                       </svg>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-medium">Chill Vibes</h3>
+                      <h3 className="font-medium">Late Nite Jazz</h3>
                       <p className="text-sm text-muted-foreground">28 tracks</p>
                     </div>
                     <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
@@ -177,11 +177,7 @@ export default function Page() {
                     </div>
                   </div>
 
-                  <div className="flex justify-center mt-6">
-                    <Button className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white">
-                      Create Merged Playlist
-                    </Button>
-                  </div>
+                 
                 </div>
               </div>
             </div>
@@ -189,7 +185,7 @@ export default function Page() {
 
           <Button
             size="lg"
-            className="bg-green-500 hover:bg-green-600 text-white"
+            className="bg-green-600 hover:bg-green-700 text-white"
             onClick={() => redirectToSpotifyAuthorize()}
           >
             <svg
@@ -215,7 +211,7 @@ export default function Page() {
       <footer className="container mx-auto py-6 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2023 Playlist Fusion. All rights reserved.
+            © 2025 SpotyMerge. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link

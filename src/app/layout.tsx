@@ -8,7 +8,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Playlist Fusion - Merge Your Spotify Playlists",
+  title: "SPOTYMERGE",
   description:
     "Combine multiple Spotify playlists into one perfect mix with just a few clicks.",
 };

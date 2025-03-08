@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
 
     // Create a new playlist
     const playlistName = name || "Merged Playlist";
-    const playlistDescription = description || "Created with Playlist Fusion";
+    const playlistDescription = description || "Created with SpotyMerge";
 
     const newPlaylist = await createPlaylist(
       accessToken,

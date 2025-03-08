@@ -138,7 +138,7 @@ export default function Dashboard() {
         body: JSON.stringify({
           playlistIds: selectedPlaylists,
           name: mergedPlaylistName || "My Merged Playlist",
-          description: "Created with Playlist Fusion",
+          description: "Created with SpotyMerge",
           removeDuplicates: true,
           deleteAfterMerge: deleteAfterMerge,
         }),
@@ -184,7 +184,7 @@ export default function Dashboard() {
             </svg>
           </div>
           <Link href="/dashboard" className="text-xl font-bold">
-            Playlist Fusion
+            SpotyMerge
           </Link>
         </div>
         <div className="flex items-center gap-4">
@@ -378,7 +378,7 @@ export default function Dashboard() {
 
                     <Button
                       size="lg"
-                      className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
+                      className="bg-green-600 hover:bg-green-700 text-white"
                       disabled={selectedPlaylists.length < 2 || merging}
                       onClick={handleMerge}
                     >
@@ -440,7 +440,7 @@ export default function Dashboard() {
       <footer className="container mx-auto py-6 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2023 Playlist Fusion. All rights reserved.
+            © 2023 SpotyMerge. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link
