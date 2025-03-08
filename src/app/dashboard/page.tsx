@@ -18,6 +18,8 @@ export default function Dashboard() {
   const [merging, setMerging] = useState(false);
   const [mergeError, setMergeError] = useState("");
   const [mergeSuccess, setMergeSuccess] = useState<any>(null);
+  const [displayCount, setDisplayCount] = useState(4);
+  const [deleteAfterMerge, setDeleteAfterMerge] = useState(false);
 
   useEffect(() => {
     // Check if user is logged in
@@ -127,6 +129,7 @@ export default function Dashboard() {
           name: mergedPlaylistName || "My Merged Playlist",
           description: "Created with Playlist Fusion",
           removeDuplicates: true,
+          deleteAfterMerge: deleteAfterMerge,
         }),
       });
 
@@ -210,7 +213,7 @@ export default function Dashboard() {
               {playlists.length > 0 ? (
                 <>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {playlists.map((playlist) => (
+                    {playlists.slice(0, displayCount).map((playlist) => (
                       <div
                         key={playlist.id}
                         className={`flex items-center gap-3 p-4 rounded-md border ${
@@ -298,58 +301,101 @@ export default function Dashboard() {
                     ))}
                   </div>
 
-                  <div className="pt-8 flex flex-col items-center gap-4">
-                    <div className="w-full max-w-md">
-                      <input
-                        type="text"
-                        placeholder="Name your merged playlist"
-                        className="w-full p-2 rounded-md border border-border bg-background"
-                        onChange={(e) => setMergedPlaylistName(e.target.value)}
-                        value={mergedPlaylistName}
-                      />
+                  {displayCount < playlists.length && (
+                    <div className="flex justify-center mt-4">
+                      <Button
+                        variant="outline"
+                        onClick={() => setDisplayCount((prev) => prev + 4)}
+                      >
+                        Load More
+                      </Button>
                     </div>
-                    <Button
-                      size="lg"
-                      className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
-                      disabled={selectedPlaylists.length < 2 || merging}
-                      onClick={handleMerge}
-                    >
-                      {merging ? (
-                        <>
-                          <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
-                          Merging...
-                        </>
-                      ) : selectedPlaylists.length < 2 ? (
-                        "Select at least 2 playlists"
-                      ) : (
-                        `Merge ${selectedPlaylists.length} Playlists`
-                      )}
-                    </Button>
-                    {mergeError && (
-                      <p className="text-sm text-red-500 mt-2">{mergeError}</p>
-                    )}
-                    {mergeSuccess && (
-                      <div className="mt-4 p-4 bg-green-500/10 border border-green-500 rounded-md text-center">
-                        <h3 className="font-medium text-green-500 mb-2">
-                          Playlist Created Successfully!
-                        </h3>
-                        <p className="text-sm mb-3">
-                          Your new playlist "{mergeSuccess.name}" with{" "}
-                          {mergeSuccess.trackCount} tracks is ready.
+                  )}
+
+                  {!mergeSuccess ? (
+                    <div className="pt-8 flex flex-col items-center gap-4">
+                      <div className="w-full max-w-md">
+                        <input
+                          type="text"
+                          placeholder="Name your merged playlist"
+                          className="w-full p-2 rounded-md border border-border bg-background"
+                          onChange={(e) =>
+                            setMergedPlaylistName(e.target.value)
+                          }
+                          value={mergedPlaylistName}
+                        />
+                      </div>
+
+                      <div className="flex items-center gap-2 w-full max-w-md">
+                        <input
+                          type="checkbox"
+                          id="deleteAfterMerge"
+                          checked={deleteAfterMerge}
+                          onChange={(e) =>
+                            setDeleteAfterMerge(e.target.checked)
+                          }
+                          className="h-4 w-4 rounded border-gray-300"
+                        />
+                        <label htmlFor="deleteAfterMerge" className="text-sm">
+                          Delete original playlists after merge
+                        </label>
+                      </div>
+
+                      <Button
+                        size="lg"
+                        className="bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white"
+                        disabled={selectedPlaylists.length < 2 || merging}
+                        onClick={handleMerge}
+                      >
+                        {merging ? (
+                          <>
+                            <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></div>
+                            Merging...
+                          </>
+                        ) : selectedPlaylists.length < 2 ? (
+                          "Select at least 2 playlists"
+                        ) : (
+                          `Merge ${selectedPlaylists.length} Playlists`
+                        )}
+                      </Button>
+                      {mergeError && (
+                        <p className="text-sm text-red-500 mt-2">
+                          {mergeError}
                         </p>
+                      )}
+                    </div>
+                  ) : (
+                    <div className="mt-8 p-6 bg-green-500/10 border border-green-500 rounded-md text-center max-w-md mx-auto">
+                      <h3 className="font-medium text-green-500 mb-2 text-xl">
+                        Playlist Created Successfully!
+                      </h3>
+                      <p className="text-md mb-6">
+                        Your new playlist "{mergeSuccess.name}" with{" "}
+                        {mergeSuccess.trackCount} tracks is ready.
+                      </p>
+                      <div className="flex flex-col gap-3">
                         <Button
-                          variant="outline"
-                          size="sm"
-                          className="border-green-500 text-green-500 hover:bg-green-500/10"
+                          size="lg"
+                          className="border-green-500 bg-green-500 text-white hover:bg-green-600"
                           onClick={() =>
                             window.open(mergeSuccess.url, "_blank")
                           }
                         >
                           Open in Spotify
                         </Button>
+                        <Button
+                          variant="outline"
+                          onClick={() => {
+                            setMergeSuccess(null);
+                            setSelectedPlaylists([]);
+                            setMergedPlaylistName("My Merged Playlist");
+                          }}
+                        >
+                          Merge Another Playlist
+                        </Button>
                       </div>
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </>
               ) : (
                 <div className="text-center py-12 bg-card rounded-lg border border-border">

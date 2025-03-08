@@ -14,8 +14,13 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const { playlistIds, name, description, removeDuplicates } =
-      await request.json();
+    const {
+      playlistIds,
+      name,
+      description,
+      removeDuplicates,
+      deleteAfterMerge,
+    } = await request.json();
     const userData = JSON.parse(userCookie);
     const userId = userData.id;
 
