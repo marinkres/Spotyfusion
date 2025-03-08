@@ -64,24 +64,14 @@ export default function Page() {
               <div className="p-6">
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
-                    <div className="h-12 w-12 rounded bg-green-500/20 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-green-500"
-                      >
-                        <path d="M9 18V5l12-2v13"></path>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <circle cx="18" cy="16" r="3"></circle>
-                      </svg>
-                    </div>
+                  <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
+  <img 
+    src="/images/uk.png" 
+    alt="UK Chill Mix Playlist" 
+    className="object-cover h-full w-full rounded"
+  />
+</div>
+
                     <div className="flex-1">
                       <h3 className="font-medium">UK Chill Mix</h3>
                       <p className="text-sm text-muted-foreground">32 tracks</p>
@@ -104,23 +94,12 @@ export default function Page() {
                   </div>
 
                   <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
-                    <div className="h-12 w-12 rounded bg-blue-500/20 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-blue-500"
-                      >
-                        <path d="M9 18V5l12-2v13"></path>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <circle cx="18" cy="16" r="3"></circle>
-                      </svg>
+                  <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
+                      <img 
+                        src="/images/gym.png" 
+                        alt="UK Chill Mix Playlist" 
+                        className="object-cover h-full w-full rounded"
+                      />
                     </div>
                     <div className="flex-1">
                       <h3 className="font-medium">Gym Workout</h3>
@@ -144,24 +123,14 @@ export default function Page() {
                   </div>
 
                   <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
-                    <div className="h-12 w-12 rounded bg-purple-500/20 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="text-purple-500"
-                      >
-                        <path d="M9 18V5l12-2v13"></path>
-                        <circle cx="6" cy="18" r="3"></circle>
-                        <circle cx="18" cy="16" r="3"></circle>
-                      </svg>
-                    </div>
+                  <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
+  <img 
+    src="/images/jazz.png" 
+    alt="UK Chill Mix Playlist" 
+    className="object-cover h-full w-full rounded"
+  />
+</div>
+
                     <div className="flex-1">
                       <h3 className="font-medium">Late Nite Jazz</h3>
                       <p className="text-sm text-muted-foreground">28 tracks</p>
