@@ -14,7 +14,7 @@ export default function PrivacyPage() {
           </div>
           <Link href="/">
             <h1 className="text-xl font-bold">
-              <span className="text-green-600">Spoty</span>Merge
+              <span className="text-green-600"></span>Mergify
             </h1>
           </Link>
         </div>
