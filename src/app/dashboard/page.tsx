@@ -430,22 +430,22 @@ export default function Dashboard() {
           </p>
           <div className="flex items-center gap-4">
             <Link
-              href="#"
+              href="/privacy"
               className="text-sm text-muted-foreground hover:text-foreground"
             >
               Privacy Policy
             </Link>
             <Link
-              href="#"
+              href="/terms"
               className="text-sm text-muted-foreground hover:text-foreground"
             >
               Terms of Service
             </Link>
             <Link
-              href="#"
+              href="https://github.com/marinkres/Spotyfusion"
               className="text-sm text-muted-foreground hover:text-foreground"
             >
-              Contact
+              Github
             </Link>
           </div>
         </div>
