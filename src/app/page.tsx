@@ -163,7 +163,7 @@ export default function Page() {
             Connect with Spotify <FaSpotify className="ml-2" size={20} />
 
           </Button>
-          <p className="text-gray-500 text-xs">For more info see the <a className="underline" href="/about">About</a> page</p>
+          <p className="text-muted-foreground text-sm">For more info see the <a className="underline" href="/about">About</a> page</p>
 
         </div>
       </main>
