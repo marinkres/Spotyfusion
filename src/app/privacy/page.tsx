@@ -127,6 +127,12 @@ export default function PrivacyPage() {
             © 2025 Mergify. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
+          <Link
+              href="/about"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              About
+            </Link>
             <Link
               href="/privacy"
               className="text-sm text-muted-foreground hover:text-foreground"

@@ -139,7 +139,6 @@ export default function Page() {
               </div>
             </div>
           </div>
-          <p className="text-gray-500 text-xs">*This project is not associated, tie-in, co-branding or promotion by Spotify.</p>
 
           <Button
             size="lg"
@@ -164,7 +163,8 @@ export default function Page() {
             Connect with Spotify <FaSpotify className="ml-2" size={20} />
 
           </Button>
-          
+          <p className="text-gray-500 text-xs">For more info see the <a className="underline" href="/about">About</a> page</p>
+
         </div>
       </main>
 
@@ -174,6 +174,12 @@ export default function Page() {
             © 2025 Mergify. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
+          <Link
+              href="/about"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              About
+            </Link>
             <Link
               href="/privacy"
               className="text-sm text-muted-foreground hover:text-foreground"
