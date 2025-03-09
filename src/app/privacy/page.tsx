@@ -10,7 +10,7 @@ export default function PrivacyPage() {
       <header className="container mx-auto py-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full flex items-center justify-center">
-            <img src="/images/logo.png" alt="SpotyMerge Logo" />
+            <img src="/images/logo.png" alt="Mergify Logo" />
           </div>
           <Link href="/">
             <h1 className="text-xl font-bold">
@@ -40,7 +40,7 @@ export default function PrivacyPage() {
 
             <h2 className="underline text-lg font-bold mb-2">Introduction</h2>
             <p>
-              This Privacy Policy outlines how SpotyMerge ("the App") collects, uses, and protects user data when interacting with the Spotify API. By using the App, you agree to the practices described in this policy. If you do not agree, please do not use the App.
+              This Privacy Policy outlines how Mergify ("the App") collects, uses, and protects user data when interacting with the Spotify API. By using the App, you agree to the practices described in this policy. If you do not agree, please do not use the App.
             </p>
 
             <h2 className="underline text-lg font-bold mb-2 mt-2">Information We Collect</h2>
@@ -111,7 +111,7 @@ export default function PrivacyPage() {
             <h2 className="underline text-lg font-bold mb-2 mt-2">Contact Us</h2>
             <p>
               For inquiries regarding this Privacy Policy or your data rights, please contact us at:<br />
-              <strong>Email:</strong> support@spotymerge.com<br />
+              <strong>Email:</strong> support@Mergify.com<br />
             </p>
 
             <p className="mt-8">
@@ -124,7 +124,7 @@ export default function PrivacyPage() {
       <footer className="container mx-auto py-6 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 SpotyMerge. All rights reserved.
+            © 2025 Mergify. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link

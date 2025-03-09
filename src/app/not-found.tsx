@@ -10,11 +10,11 @@ export default function Custom404() {
       <header className="container mx-auto py-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full flex items-center justify-center">
-            <img src="/images/logo.png" alt="SpotyMerge Logo" />
+            <img src="/images/logo.png" alt="Mergify Logo" />
           </div>
           <Link href="/">
             <h1 className="text-xl font-bold">
-              <span className="text-green-600">Spoty</span>Merge
+              <span className="text-green-600">Merg</span>ify
             </h1>
           </Link>
         </div>
@@ -72,7 +72,7 @@ export default function Custom404() {
       <footer className="container mx-auto py-6 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 SpotyMerge. All rights reserved.
+            © 2025 Mergify. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link

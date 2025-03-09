@@ -16,7 +16,7 @@ export default function Page() {
             <img src="images/logo.png"></img>  
         </div>
 
-<h1 className="text-xl font-bold "><span className="text-green-600">Spoty</span>Merge</h1>
+<h1 className="text-xl font-bold "><span className="text-green-600">Merg</span>ify</h1>
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
@@ -171,7 +171,7 @@ export default function Page() {
       <footer className="container mx-auto py-6 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 SpotyMerge. All rights reserved.
+            © 2025 Mergify. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link

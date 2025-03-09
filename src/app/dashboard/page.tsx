@@ -138,7 +138,7 @@ export default function Dashboard() {
         body: JSON.stringify({
           playlistIds: selectedPlaylists,
           name: mergedPlaylistName || "My Merged Playlist",
-          description: "Created with SpotyMerge",
+          description: "Created with Mergify",
           removeDuplicates: true,
           deleteAfterMerge: deleteAfterMerge,
         }),
@@ -426,7 +426,7 @@ export default function Dashboard() {
       <footer className="container mx-auto py-6 border-t border-border">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © 2025 SpotyMerge. All rights reserved.
+            © 2025 Mergify. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link
