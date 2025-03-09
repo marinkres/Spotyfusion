@@ -139,6 +139,7 @@ export default function Page() {
               </div>
             </div>
           </div>
+          <p className="text-gray-500 text-xs">*This project is not associated, tie-in, co-branding or promotion by Spotify.</p>
 
           <Button
             size="lg"
