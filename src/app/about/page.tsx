@@ -10,7 +10,7 @@ export default function AboutPage() {
       <header className="container mx-auto py-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <div className="h-8 w-8 rounded-full flex items-center justify-center">
-            <img src="/images/logo.png" alt="SpotyMerge Logo" />
+            <img src="/images/logo.png" alt="Mergify Logo" />
           </div>
           <Link href="/">
             <h1 className="text-xl font-bold">
@@ -36,7 +36,7 @@ export default function AboutPage() {
               About Mergify
             </h1>
             <p className="text-lg text-muted-foreground">
-              Mergify is your ultimate tool for combining Spotify playlists effortlessly. Whether you're creating a party mix or organizing your music library, SpotyMerge simplifies the process with just a few clicks.
+              Mergify is your ultimate tool for combining Spotify playlists effortlessly. Whether you're creating a party mix or organizing your music library, Mergify simplifies the process with just a few clicks.
             </p>
             <p className="text-gray-500 text-xs">*This project is not associated, tie-in, co-branding or promotion by Spotify.</p>
           </div>
