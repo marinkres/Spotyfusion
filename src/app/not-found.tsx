@@ -14,7 +14,7 @@ export default function Custom404() {
           </div>
           <Link href="/">
             <h1 className="text-xl font-bold">
-              <span className="text-green-600">Merg</span>ify
+              <span className="text-green-600"></span>Mergify
             </h1>
           </Link>
         </div>

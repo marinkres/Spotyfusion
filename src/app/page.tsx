@@ -16,7 +16,7 @@ export default function Page() {
             <img src="images/logo.png"></img>  
         </div>
 
-<h1 className="text-xl font-bold "><span className="text-green-600">Merg</span>ify</h1>
+<h1 className="text-xl font-bold "><span className="text-green-600"></span>Mergify</h1>
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
