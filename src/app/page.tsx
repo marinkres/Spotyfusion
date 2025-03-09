@@ -192,12 +192,6 @@ export default function Page() {
             >
               Terms of Service
             </Link>
-            <Link
-              href="https://github.com/marinkres/Spotyfusion"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Github
-            </Link>
           </div>
         </div>
       </footer>

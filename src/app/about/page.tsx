@@ -291,12 +291,6 @@ export default function AboutPage() {
             >
               Terms of Service
             </Link>
-            <Link
-              href="#"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Github
-            </Link>
           </div>
         </div>
       </footer>
