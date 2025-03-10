@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
+import Footer from "@/components/footer";
 
 export default function PrivacyPage() {
   return (
@@ -121,33 +122,7 @@ export default function PrivacyPage() {
         </div>
       </main>
 
-      <footer className="container mx-auto py-6 border-t border-border">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © 2025 Mergify. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4">
-          <Link
-              href="/about"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              About
-            </Link>
-            <Link
-              href="/privacy"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-sm text-muted-foreground hover:text-foreground"
-            >
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
