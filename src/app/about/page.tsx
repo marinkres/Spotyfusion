@@ -43,8 +43,7 @@ export default function AboutPage() {
 
           {/* Features Section */}
           <section className="space-y-8">
-          <div className="p-6 bg-gradient-to-br from-green-600 to-black-100 rounded-3xl shadow-lg space-y-6">
-            <h2 className="text-4xl font-extrabold text-center text-white">Why Mergify?</h2>
+          <div className="p-6 space-y-6">
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Card 1 */}
               <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
