@@ -280,7 +280,7 @@ export default function Dashboard() {
                         </div>
                         <div className="flex-1">
                           <h3 className="font-medium truncate">
-                            {playlist.name}
+                            {playlist.name.length > 20 ? `${playlist.name.substring(0,20)}...` : playlist.name}
                           </h3>
                           <p className="text-sm text-muted-foreground">
                             {playlist.tracks.total} tracks
