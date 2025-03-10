@@ -43,33 +43,49 @@ export default function AboutPage() {
 
           {/* Features Section */}
           <section className="space-y-8">
-            
-          <div className="p-6 bg-secondary rounded-3xl shadow-md space-y-4">
-            <h2 className="text-3xl font-bold text-left">Why Mergify?</h2>
-            <ul className="space-y-4 text-left list-disc list-inside">
-              <li>
-                Combine Playlists: Merge multiple Spotify playlists into one without duplicates.
+          <div className="p-6 bg-gradient-to-br from-green-600 to-black-100 rounded-3xl shadow-lg space-y-6">
+            <h2 className="text-4xl font-extrabold text-center text-white">Why Mergify?</h2>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Card 1 */}
+              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
+                <h3 className="font-bold text-lg text-gray-800">Combine Playlists</h3>
+                <p className="text-gray-600">
+                  Merge multiple Spotify playlists into one without duplicates.
+                </p>
               </li>
-              <li>
-                Duplicate Removal: Automatically removes duplicate tracks during the merge process.
+
+              {/* Card 2 */}
+              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
+                <h3 className="font-bold text-lg text-gray-800">Duplicate Removal</h3>
+                <p className="text-gray-600">
+                  Automatically removes duplicate tracks during the merge process.
+                </p>
               </li>
-              <li>
-                User-Friendly: Clean and intuitive interface for seamless interaction.
+
+              {/* Card 3 */}
+              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
+                <h3 className="font-bold text-lg text-gray-800">User-Friendly</h3>
+                <p className="text-gray-600">
+                  Clean and intuitive interface for seamless interaction.
+                </p>
               </li>
-              <li>
-                Secure Authentication: Your data is safe with Spotify's secure OAuth system.
-              </li>
-              <li>
-                Cross-Device Support: Use Mergify on desktop or mobile devices.
+
+              {/* Card 4 */}
+              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
+                <h3 className="font-bold text-lg text-gray-800">Secure Authentication</h3>
+                <p className="text-gray-600">
+                  Your data is safe with Spotify's secure OAuth system.
+                </p>
               </li>
             </ul>
-            </div>
-          </section>
+          </div>
+        </section>
+
 
           {/* Guide Section */}
           <section className="space-y-8 text-left">
           <div className="p-6 border-2 border-green-600 rounded-3xl shadow-md space-y-4">
-            <h2 className="text-3xl font-bold">How to Use Mergify</h2>
+            <h2 className="text-3xl text-center font-bold">How to Use Mergify</h2>
 
             {/* Step-by-Step Guide */}
             <div className="space-y-4">
