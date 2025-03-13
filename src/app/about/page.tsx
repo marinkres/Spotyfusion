@@ -44,36 +44,36 @@ export default function AboutPage() {
 
           {/* Features Section */}
           <section className="space-y-8">
-          <div className="p-6 space-y-6">
+          <div className="p-6 space-y-6 text-white">
             <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {/* Card 1 */}
-              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
-                <h3 className="font-bold text-lg text-gray-800">Combine Playlists</h3>
-                <p className="text-gray-600">
+              <li className="p-4 bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-800">
+                <h3 className="font-bold text-lg text-white">Combine Playlists</h3>
+                <p>
                   Merge multiple Spotify playlists into one without duplicates.
                 </p>
               </li>
 
               {/* Card 2 */}
-              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
-                <h3 className="font-bold text-lg text-gray-800">Duplicate Removal</h3>
-                <p className="text-gray-600">
+              <li className="p-4 bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-800">
+                <h3 className="font-bold text-lg text-white">Duplicate Removal</h3>
+                <p>
                   Automatically removes duplicate tracks during the merge process.
                 </p>
               </li>
 
               {/* Card 3 */}
-              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
-                <h3 className="font-bold text-lg text-gray-800">User-Friendly</h3>
-                <p className="text-gray-600">
+              <li className="p-4 bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-800">
+                <h3 className="font-bold text-lg text-white">User-Friendly</h3>
+                <p>
                   Clean and intuitive interface for seamless interaction.
                 </p>
               </li>
 
               {/* Card 4 */}
-              <li className="p-4 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200">
-                <h3 className="font-bold text-lg text-gray-800">Secure Authentication</h3>
-                <p className="text-gray-600">
+              <li className="p-4 bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-800">
+                <h3 className="font-bold text-lg text-white">Secure Authentication</h3>
+                <p>
                   Your data is safe with Spotify's secure OAuth system.
                 </p>
               </li>

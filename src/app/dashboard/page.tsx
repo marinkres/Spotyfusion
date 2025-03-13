@@ -7,6 +7,9 @@ import { getUserPlaylists } from "@/lib/spotify";
 import Link from "next/link";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import Footer from "@/components/footer";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function Dashboard() {
   const router = useRouter();
@@ -110,21 +113,26 @@ export default function Dashboard() {
     );
   };
 
-  const handleLogout = async () => {
+   // State for handling logout modal visibility
+   const [showLogoutModal, setShowLogoutModal] = useState(false);
+
+   // Logout handler function
+   const handleLogout = async () => {
     try {
       const response = await fetch("/api/auth/logout");
       if (response.ok) {
+        toast.success("Logout successful!");
         router.push("/");
       } else {
-        console.error("Logout failed");
+        toast.error("Logout failed. Please try again.");
       }
     } catch (error) {
       console.error("Error during logout:", error);
-      // Fallback: manually redirect to home
-      router.push("/");
+      toast.error("An error occurred during logout.");
     }
   };
-
+  
+  
   const handleMerge = async () => {
     setMerging(true);
     setMergeError("");
@@ -188,13 +196,34 @@ export default function Dashboard() {
             </div>
           )}
           <ThemeSwitcher />
-          <Button variant="outline" size="sm" onClick={handleLogout}>
+          
+          <Button variant="outline" size="sm" onClick={() => setShowLogoutModal(true)}>
             Sign Out
           </Button>
+
         </div>
       </header>
+      {/* Logout Confirmation Modal */}
+      {showLogoutModal && (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="bg-card p-6 rounded-md shadow-lg text-center max-w-sm w-full">
+          <h3 className="font-semibold text-lg mb-4">Confirm Logout</h3>
+          <p className="mb-6">Are you sure you want to log out?</p>
+          <div className="flex gap-4 justify-center">
+            <Button variant="destructive" onClick={handleLogout}>
+              Yes, Log Out
+            </Button>
+            <Button variant="outline" onClick={() => setShowLogoutModal(false)}>
+              Cancel
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      )}
 
       <main className="flex-1 container mx-auto py-8 px-4">
+      <ToastContainer position="top-center" autoClose={2000} />
         <div className="max-w-4xl mx-auto">
           <h1 className="text-3xl font-bold mb-6">Your Playlists</h1>
           <p className="text-muted-foreground mb-8">
