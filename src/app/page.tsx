@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { redirectToSpotifyAuthorize } from "@/lib/spotify";
 import { FaSpotify } from "react-icons/fa";
 import Footer from "@/components/footer";
+import { motion } from "framer-motion";
+
 export default function Page() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-background/90 flex flex-col">
@@ -45,100 +47,74 @@ export default function Page() {
             <div className="relative bg-card rounded-lg shadow-xl overflow-hidden border border-border">
               <div className="p-6">
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
-                  <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
-  <img 
-    src="/images/uk.png" 
-    alt="UK Chill Mix Playlist" 
-    className="object-cover h-full w-full rounded"
-  />
-</div>
 
+                  {/* Existing Playlist Items */}
+                  <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
+                    <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
+                      <img src="/images/uk.png" alt="UK Chill Mix Playlist" className="object-cover h-full w-full rounded"/>
+                    </div>
                     <div className="flex-1">
                       <h3 className="font-medium">UK Chill Mix</h3>
                       <p className="text-sm text-muted-foreground">32 tracks</p>
                     </div>
-                    <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </div>
                   </div>
 
                   <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
-                  <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
-                      <img 
-                        src="/images/gym.png" 
-                        alt="UK Chill Mix Playlist" 
-                        className="object-cover h-full w-full rounded"
-                      />
+                    <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
+                      <img src="/images/gym.png" alt="Gym Workout Playlist" className="object-cover h-full w-full rounded"/>
                     </div>
                     <div className="flex-1">
                       <h3 className="font-medium">Gym Workout</h3>
                       <p className="text-sm text-muted-foreground">45 tracks</p>
                     </div>
-                    <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </div>
                   </div>
 
                   <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
-                  <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
-  <img 
-    src="/images/jazz.png" 
-    alt="UK Chill Mix Playlist" 
-    className="object-cover h-full w-full rounded"
-  />
-</div>
-
+                    <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
+                      <img src="/images/jazz.png" alt="Late Nite Jazz Playlist" className="object-cover h-full w-full rounded"/>
+                    </div>
                     <div className="flex-1">
                       <h3 className="font-medium">Late Nite Jazz</h3>
                       <p className="text-sm text-muted-foreground">28 tracks</p>
                     </div>
-                    <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                      </svg>
-                    </div>
                   </div>
 
-                 
+                  {/* Animated "Now Playing" Section */}
+                  <div className="mt-6 flex items-center justify-center gap-2 p-4 bg-secondary/30 rounded-md border border-border">
+                    <span className="text-sm font-medium text-green-600">Now Playing:</span>
+
+                    {/* Animated Bars */}
+                    <motion.div
+                      initial={{ scaleY: 0.2 }}
+                      animate={{ scaleY: [0.2, 1, 0.2] }}
+                      transition={{ repeat: Infinity, duration: 1, ease: "easeInOut" }}
+                      style={{ originY: "bottom" }}
+                      className="w-[4px] h-[20px] bg-green-500 rounded"
+                    />
+                    <motion.div
+                      initial={{ scaleY: 0.5 }}
+                      animate={{ scaleY: [0.5, 1, 0.5] }}
+                      transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut", delay: 0.2 }}
+                      style={{ originY: "bottom" }}
+                      className="w-[4px] h-[20px] bg-green-500 rounded"
+                    />
+                    <motion.div
+                      initial={{ scaleY: 0.8 }}
+                      animate={{ scaleY: [0.8, 1, 0.8] }}
+                      transition={{ repeat: Infinity, duration: 0.9, ease: "easeInOut", delay: 0.4 }}
+                      style={{ originY: "bottom" }}
+                      className="w-[4px] h-[20px] bg-green-500 rounded"
+                    />
+
+                    {/* Track Name */}
+                    <span className="ml-2 text-sm font-medium text-muted-foreground">New Playlist</span>
+                  </div>
+
                 </div>
               </div>
             </div>
           </div>
+
 
           <Button
             size="lg"
