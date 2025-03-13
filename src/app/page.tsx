@@ -18,7 +18,7 @@ export default function Page() {
             <img src="images/logo.png"></img>  
         </div>
 
-<h1 className="text-xl font-bold "><span className="text-green-600"></span>Mergify</h1>
+<h1 className="text-xl font-bold "><span className="text-green-600"></span>Mergify<span className="text-green-500">+</span></h1>
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
@@ -27,7 +27,7 @@ export default function Page() {
             size="sm"
             onClick={() => redirectToSpotifyAuthorize()}
           >
-            Sign In
+            Sign In <FaSpotify className="ml-2" size={15} />
           </Button>
         </div>
       </header>
@@ -80,7 +80,7 @@ export default function Page() {
                   </div>
 
                   {/* Animated "Now Playing" Section */}
-                  <div className="mt-6 flex items-center justify-center gap-2 p-4 bg-secondary/30 rounded-md border border-border">
+                  <div className="mt-6 flex items-center justify-center gap-2 p-1">
                     <span className="text-sm font-medium text-green-600">Now Playing:</span>
 
                     {/* Animated Bars */}
@@ -107,7 +107,7 @@ export default function Page() {
                     />
 
                     {/* Track Name */}
-                    <span className="ml-2 text-sm font-medium text-muted-foreground">New Playlist</span>
+                    <span className="ml-2 text-sm font-medium text-muted-foreground">Chill Jazz Workout</span>
                   </div>
 
                 </div>
