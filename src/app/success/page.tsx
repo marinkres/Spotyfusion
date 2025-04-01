@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import Footer from "@/components/footer";
+import { PlaylistCard } from "@/components/playlist-card";
 
 function SuccessContent() {
   const router = useRouter();
@@ -97,21 +98,11 @@ function SuccessContent() {
                 {mergedPlaylist.trackCount} tracks
               </span>
             </div>
-            <div className="flex items-center gap-3 p-3 rounded-md bg-green-500/20">
-              <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
-                <img
-                  src={mergedPlaylist.images?.[0]?.url || "/images/logo.png"}
-                  alt={mergedPlaylist.name}
-                  className="object-cover h-full w-full rounded"
-                />
-              </div>
-              <div className="flex-1">
-                <h3 className="font-medium">{mergedPlaylist.name}</h3>
-                <p className="text-sm text-muted-foreground">
-                  Created with Mergify
-                </p>
-              </div>
-            </div>
+            <PlaylistCard
+              playlist={mergedPlaylist}
+              variant="success"
+              showTrackCount={false}
+            />
           </Card>
 
           <div className="flex flex-col gap-3">
@@ -126,14 +117,14 @@ function SuccessContent() {
               variant="outline"
               onClick={() => router.push("/dashboard")}
             >
-              Merge Another Playlist
+              Create Another Playlist
             </Button>
             <Button
               variant="ghost"
               onClick={() => router.push("/dashboard")}
               className="text-muted-foreground hover:text-foreground"
             >
-              Back to Home
+              Back to Dashboard
             </Button>
           </div>
         </div>

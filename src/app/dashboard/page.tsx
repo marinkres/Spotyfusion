@@ -14,6 +14,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { MergeOptions } from "@/components/merge-options";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { PlaylistCard } from "@/components/playlist-card";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -25,7 +26,6 @@ export default function Dashboard() {
     useState("My Merged Playlist");
   const [merging, setMerging] = useState(false);
   const [mergeError, setMergeError] = useState("");
-  const [mergeSuccess, setMergeSuccess] = useState<any>(null);
   const [displayCount, setDisplayCount] = useState(4);
   const [deleteAfterMerge, setDeleteAfterMerge] = useState(false);
   const [removeDuplicates, setRemoveDuplicates] = useState(true);
@@ -173,7 +173,6 @@ export default function Dashboard() {
   const handleMerge = async () => {
     setMerging(true);
     setMergeError("");
-    setMergeSuccess(null);
 
     try {
       const response = await fetch("/api/merge", {
@@ -276,35 +275,18 @@ export default function Dashboard() {
                   {selectedPlaylists.length} selected
                 </span>
               </div>
-              <div className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="min-h-[400px] flex flex-col">
+                <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {playlists.slice((displayCount - 4), displayCount).map((playlist) => (
-                    <div
+                    <PlaylistCard
                       key={playlist.id}
-                      className={`flex items-center gap-3 p-3 rounded-md cursor-pointer transition-colors ${
-                        selectedPlaylists.includes(playlist.id)
-                          ? "bg-green-500/20"
-                          : "bg-secondary/50 hover:bg-secondary"
-                      }`}
+                      playlist={playlist}
+                      isSelected={selectedPlaylists.includes(playlist.id)}
                       onClick={() => togglePlaylistSelection(playlist.id)}
-                    >
-                      <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
-                        <img
-                          src={playlist.images[0]?.url || "/images/logo.png"}
-                          alt={playlist.name}
-                          className="object-cover h-full w-full rounded"
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-medium">{playlist.name}</h3>
-                        <p className="text-sm text-muted-foreground">
-                          {playlist.tracks.total} tracks
-                        </p>
-                      </div>
-                    </div>
+                    />
                   ))}
                 </div>
-                <div className="flex justify-between items-center pt-2">
+                <div className="flex justify-between items-center mt-6 pt-4 border-t">
                   <Button
                     variant="outline"
                     size="sm"
@@ -329,38 +311,7 @@ export default function Dashboard() {
             </Card>
 
             <div className="space-y-6">
-              {mergeSuccess ? (
-                <Card className="p-6">
-                  <div className="text-center space-y-4">
-                    <h3 className="font-medium text-green-500 mb-2 text-xl">
-                      Playlist Created Successfully!
-                    </h3>
-                    <p className="text-md mb-6">
-                      Your new playlist "{mergeSuccess.name}" with{" "}
-                      {mergeSuccess.trackCount} tracks is ready.
-                    </p>
-                    <div className="flex flex-col gap-3">
-                      <Button
-                        size="lg"
-                        className="border-green-500 bg-green-500 text-white hover:bg-green-600"
-                        onClick={() => window.open(mergeSuccess.url, "_blank")}
-                      >
-                        Open in Spotify
-                      </Button>
-                      <Button
-                        variant="outline"
-                        onClick={() => {
-                          setMergeSuccess(null);
-                          setSelectedPlaylists([]);
-                          setAnalysis(null);
-                        }}
-                      >
-                        Merge Another Playlist
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              ) : selectedPlaylists.length >= 2 ? (
+              {selectedPlaylists.length >= 2 ? (
                 <Card className="p-6 space-y-6 bg-card border shadow-lg">
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">

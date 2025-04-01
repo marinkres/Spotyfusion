@@ -27,7 +27,6 @@ export default function Page() {
           </div>
           <h1 className="text-xl font-bold">
             <span className="text-green-600">Mergify</span>
-            <span className="text-green-500">+</span>
           </h1>
         </div>
         <div className="flex items-center gap-4">
