@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -9,7 +9,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import Footer from "@/components/footer";
 
-export default function SuccessPage() {
+function SuccessContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [user, setUser] = useState<any>(null);
@@ -124,9 +124,16 @@ export default function SuccessPage() {
             </Button>
             <Button
               variant="outline"
-              onClick={() => router.push("/")}
+              onClick={() => router.push("/dashboard")}
             >
-              Home
+              Merge Another Playlist
+            </Button>
+            <Button
+              variant="ghost"
+              onClick={() => router.push("/dashboard")}
+              className="text-muted-foreground hover:text-foreground"
+            >
+              Back to Home
             </Button>
           </div>
         </div>
@@ -134,5 +141,13 @@ export default function SuccessPage() {
 
       <Footer />
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessContent />
+    </Suspense>
   );
 } 
