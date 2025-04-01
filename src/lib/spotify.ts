@@ -97,9 +97,11 @@ export const getUserPlaylists = async (accessToken: string) => {
 export const getPlaylistTracks = async (
   accessToken: string,
   playlistId: string,
+  limit: number = 100,
+  offset: number = 0,
 ) => {
   const response = await fetch(
-    `https://api.spotify.com/v1/playlists/${playlistId}/tracks`,
+    `https://api.spotify.com/v1/playlists/${playlistId}/tracks?limit=${limit}&offset=${offset}`,
     {
       headers: {
         Authorization: `Bearer ${accessToken}`,

@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  createPlaylist,
-  getPlaylistTracks,
-  addTracksToPlaylist,
-} from "@/lib/spotify";
+import { getPlaylistTracks } from "@/lib/spotify";
 
 export async function POST(request: NextRequest) {
   const accessToken = request.cookies.get("spotify_access_token")?.value;
@@ -14,15 +10,7 @@ export async function POST(request: NextRequest) {
   }
 
   try {
-    const {
-      playlistIds,
-      name,
-      description,
-      removeDuplicates,
-      deleteAfterMerge,
-    } = await request.json();
-    const userData = JSON.parse(userCookie);
-    const userId = userData.id;
+    const { playlistIds } = await request.json();
 
     if (!playlistIds || !Array.isArray(playlistIds) || playlistIds.length < 2) {
       return NextResponse.json(
@@ -34,6 +22,8 @@ export async function POST(request: NextRequest) {
     // Fetch tracks from all selected playlists
     const allTracks = [];
     const trackUris = new Map<string, { count: number; track: any }>();
+    const trackNames = new Map<string, string>();
+    const trackArtists = new Map<string, string>();
 
     for (const playlistId of playlistIds) {
       let tracksData;
@@ -51,6 +41,8 @@ export async function POST(request: NextRequest) {
               } else {
                 trackUris.set(uri, { count: 1, track: item.track });
               }
+              trackNames.set(uri, item.track.name);
+              trackArtists.set(uri, item.track.artists[0].name);
             }
           }
         }
@@ -58,52 +50,31 @@ export async function POST(request: NextRequest) {
       } while (tracksData.next); // Continue fetching if there are more tracks
     }
 
-    // Create a new playlist
-    const playlistName = name || "Merged Playlist";
-    const playlistDescription = description || "Created with Mergify";
+    // Calculate statistics
+    const trackValues = Array.from(trackUris.values());
+    const totalTracks = trackValues.reduce((sum, { count }) => sum + count, 0);
+    const uniqueTracks = trackValues.filter(({ count }) => count === 1).length;
+    const duplicateTracks = trackValues.filter(({ count }) => count > 1);
+    const duplicateCount = duplicateTracks.length;
 
-    const newPlaylist = await createPlaylist(
-      accessToken,
-      userId,
-      playlistName,
-      playlistDescription,
-    );
-
-    if (!newPlaylist.id) {
-      return NextResponse.json(
-        { error: "Failed to create playlist" },
-        { status: 500 },
-      );
-    }
-
-    // Add tracks to the new playlist based on duplicate removal option
-    const uris = Array.from(trackUris.entries()).flatMap(([uri, { count }]) => {
-      if (removeDuplicates) {
-        return [uri];
-      } else {
-        return Array(count).fill(uri);
-      }
-    });
-
-    // Add tracks in batches of 100 as per Spotify API limits
-    const batchSize = 100;
-    for (let i = 0; i < uris.length; i += batchSize) {
-      const batch = uris.slice(i, i + batchSize);
-      await addTracksToPlaylist(accessToken, newPlaylist.id, batch);
-    }
+    // Sort duplicate tracks by count (most duplicates first)
+    duplicateTracks.sort((a, b) => b.count - a.count);
 
     return NextResponse.json({
       success: true,
-      playlist: {
-        id: newPlaylist.id,
-        name: newPlaylist.name,
-        url: newPlaylist.external_urls?.spotify,
-        trackCount: uris.length,
-        images: newPlaylist.images,
+      stats: {
+        totalTracks,
+        uniqueTracks,
+        duplicateCount,
+        duplicateTracks: duplicateTracks.map(({ track, count }) => ({
+          name: track.name,
+          artist: track.artists[0].name,
+          count,
+        })),
       },
     });
   } catch (error) {
-    console.error("Merge error:", error);
+    console.error("Analysis error:", error);
     return NextResponse.json({ error: "Server error" }, { status: 500 });
   }
-}
+} 

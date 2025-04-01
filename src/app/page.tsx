@@ -7,28 +7,46 @@ import { redirectToSpotifyAuthorize } from "@/lib/spotify";
 import { FaSpotify } from "react-icons/fa";
 import Footer from "@/components/footer";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 export default function Page() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check if user is authenticated by looking for the access token cookie
+    const accessToken = document.cookie.includes("spotify_access_token");
+    setIsAuthenticated(accessToken);
+  }, []);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-background to-background/90 flex flex-col">
       <header className="container mx-auto py-6 flex justify-between items-center">
         <div className="flex items-center gap-2">
-   
-        <div className="h-8 w-8 rounded-full flex items-center justify-center">
-            <img src="images/logo.png"></img>  
-        </div>
-
-<h1 className="text-xl font-bold "><span className="text-green-600"></span>Mergify<span className="text-green-500">+</span></h1>
+          <div className="h-8 w-8 rounded-full flex items-center justify-center">
+            <img src="images/logo.png" alt="Mergify Logo" />
+          </div>
+          <h1 className="text-xl font-bold">
+            <span className="text-green-600">Mergify</span>
+            <span className="text-green-500">+</span>
+          </h1>
         </div>
         <div className="flex items-center gap-4">
           <ThemeSwitcher />
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => redirectToSpotifyAuthorize()}
-          >
-            Sign In <FaSpotify className="ml-2" size={15} />
-          </Button>
+          {!isAuthenticated ? (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => redirectToSpotifyAuthorize()}
+            >
+              Sign In <FaSpotify className="ml-2" size={15} />
+            </Button>
+          ) : (
+            <Link href="/dashboard">
+              <Button size="sm" className="bg-green-600 hover:bg-green-700 text-white">
+                Merge Playlists
+              </Button>
+            </Link>
+          )}
         </div>
       </header>
 
@@ -38,8 +56,7 @@ export default function Page() {
             Merge Your Spotify Playlists
           </h1>
           <p className="text-xl text-muted-foreground">
-            Combine multiple playlists into one perfect mix with just a
-            click.
+            Combine multiple playlists into one perfect mix with just a click.
           </p>
 
           <div className="relative w-full max-w-2xl mx-auto my-12">
@@ -47,8 +64,7 @@ export default function Page() {
             <div className="relative bg-card rounded-lg shadow-xl overflow-hidden border border-border">
               <div className="p-6">
                 <div className="space-y-4">
-
-                  {/* Existing Playlist Items */}
+                  {/* Example Playlist Items */}
                   <div className="flex items-center gap-3 p-3 rounded-md bg-secondary/50">
                     <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
                       <img src="/images/uk.png" alt="UK Chill Mix Playlist" className="object-cover h-full w-full rounded"/>
@@ -109,38 +125,38 @@ export default function Page() {
                     {/* Track Name */}
                     <span className="ml-2 text-sm font-medium text-muted-foreground">Chill Jazz Workout</span>
                   </div>
-
                 </div>
               </div>
             </div>
           </div>
 
-
-          <Button
-            size="lg"
-            className="bg-green-600 hover:bg-green-700 text-white"
-            onClick={() => redirectToSpotifyAuthorize()}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-2"
+          {!isAuthenticated && (
+            <Button
+              size="lg"
+              className="bg-green-600 hover:bg-green-700 text-white"
+              onClick={() => redirectToSpotifyAuthorize()}
             >
-              <path d="M12 5v14"></path>
-              <path d="M5 12h14"></path>
-            </svg>
-            Connect with Spotify <FaSpotify className="ml-2" size={20} />
-
-          </Button>
-          <p className="text-muted-foreground text-sm">For more info see the <a className="underline" href="/about">About</a> page</p>
-
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-2"
+              >
+                <path d="M12 5v14"></path>
+                <path d="M5 12h14"></path>
+              </svg>
+              Connect with Spotify <FaSpotify className="ml-2" size={20} />
+            </Button>
+          )}
+          <p className="text-muted-foreground text-sm">
+            For more info see the <Link href="/about" className="underline">About</Link> page
+          </p>
         </div>
       </main>
       <Footer />
