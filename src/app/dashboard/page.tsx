@@ -276,9 +276,9 @@ export default function Dashboard() {
                   {selectedPlaylists.length} selected
                 </span>
               </div>
-              <ScrollArea className="h-[400px]">
-                <div className="space-y-2">
-                  {playlists.map((playlist) => (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {playlists.slice((displayCount - 4), displayCount).map((playlist) => (
                     <div
                       key={playlist.id}
                       className={`flex items-center gap-3 p-3 rounded-md cursor-pointer transition-colors ${
@@ -290,7 +290,7 @@ export default function Dashboard() {
                     >
                       <div className="h-12 w-12 rounded overflow-hidden flex items-center justify-center">
                         <img
-                          src={playlist.images[0]?.url || "/images/default-playlist.png"}
+                          src={playlist.images[0]?.url || "/images/logo.png"}
                           alt={playlist.name}
                           className="object-cover h-full w-full rounded"
                         />
@@ -304,7 +304,28 @@ export default function Dashboard() {
                     </div>
                   ))}
                 </div>
-              </ScrollArea>
+                <div className="flex justify-between items-center pt-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setDisplayCount(prev => Math.max(4, prev - 4))}
+                    disabled={displayCount <= 4}
+                  >
+                    Previous
+                  </Button>
+                  <span className="text-sm text-muted-foreground">
+                    Page {Math.floor(displayCount / 4)} of {Math.ceil(playlists.length / 4)}
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setDisplayCount(prev => Math.min(playlists.length, prev + 4))}
+                    disabled={displayCount >= playlists.length}
+                  >
+                    Next
+                  </Button>
+                </div>
+              </div>
             </Card>
 
             <div className="space-y-6">
